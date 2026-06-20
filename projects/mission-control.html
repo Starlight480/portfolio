@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission Control — Starlight480 Portfolio</title>
+  <meta name="description" content="Mission Control: Real-time multi-agent operations dashboard with dark glassmorphism UI, live SSE feeds, and canvas visualizations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .project-hero {
+      padding: 140px 0 var(--space-3xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .project-hero::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(125,211,252,0.1) 0%, transparent 70%);
+      top: 5%;
+      right: -100px;
+      pointer-events: none;
+    }
+    .project-hero-content { position: relative; z-index: 1; }
+    .back-link {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-lg);
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--violet); }
+    .project-hero h1 { margin-bottom: var(--space-md); }
+    .project-hero-desc { font-size: 1.15rem; max-width: 55ch; margin-bottom: var(--space-lg); }
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-lg);
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--border);
+    }
+    .project-meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-xs);
+    }
+    .project-meta-value { color: var(--text-heading); font-weight: 600; font-size: 0.9rem; }
+
+    .project-body { padding: var(--space-3xl) 0; }
+    .project-body h2 {
+      margin-bottom: var(--space-md);
+      padding-top: var(--space-2xl);
+      border-top: 1px solid var(--border);
+    }
+    .project-body h2:first-of-type { border-top: none; padding-top: 0; }
+    .project-body p { margin-bottom: var(--space-md); }
+    .project-body ul { padding-left: var(--space-lg); margin-bottom: var(--space-md); }
+    .project-body li { margin-bottom: var(--space-sm); }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-md);
+      margin: var(--space-lg) 0;
+    }
+    .feature-card {
+      padding: var(--space-lg);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    .feature-card h4 { margin-bottom: var(--space-sm); font-size: 0.95rem; }
+    .feature-card p { font-size: 0.85rem; color: var(--text-muted); }
+
+    .tech-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--space-lg) 0;
+    }
+    .tech-table th, .tech-table td {
+      padding: var(--space-md);
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .tech-table th {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .tech-table td { font-size: 0.9rem; }
+    .tech-table tr:last-child td { border-bottom: none; }
+
+    .project-nav {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-2xl) 0;
+      border-top: 1px solid var(--border);
+      margin-top: var(--space-3xl);
+    }
+    .project-nav-link {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-body);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      transition: color 0.2s;
+    }
+    .project-nav-link:hover { color: var(--violet); }
+    .project-nav-link span { font-size: 0.7rem; color: var(--text-muted); }
+    .project-nav-link.next { text-align: right; }
+
+    .highlight-box {
+      background: var(--cyan-dim);
+      border: 1px solid rgba(125,211,252,0.2);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      margin: var(--space-lg) 0;
+    }
+    .highlight-box p { color: var(--cyan); font-family: var(--font-mono); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-logo">starlight<span>480</span></a>
+      <div class="flex flex-center" style="gap: var(--space-lg);">
+        <ul class="nav-links">
+          <li><a href="../index.html">Projects</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../about.html#contact">Contact</a></li>
+        </ul>
+        <div class="theme-toggle">
+          <button class="theme-toggle-btn" id="theme-toggle-btn" type="button" aria-label="Switch to liquid crystal">
+            <span class="theme-toggle-icon theme-toggle-icon--moon active">●</span>
+            <span class="theme-toggle-thumb"></span>
+            <span class="theme-toggle-icon theme-toggle-icon--sun">○</span>
+          </button>
+          <span class="theme-toggle-label">Theme</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="project-hero">
+    <div class="container project-hero-content">
+      <a href="../index.html" class="back-link">← Back to Projects</a>
+      <div class="tag tag-cyan mb-md">Real-Time Dashboard</div>
+      <h1>Mission Control</h1>
+      <p class="project-hero-desc">
+        Real-time multi-agent operations dashboard. Live SSE feeds, dark glassmorphism UI, canvas sparklines, radar charts, and SQLite-backed task management — zero dependencies.
+      </p>
+      <div class="project-card-tags mb-lg">
+        <span class="tag tag-cyan">Python</span>
+        <span class="tag tag-violet">SSE</span>
+        <span class="tag tag-rose">Glassmorphism</span>
+        <span class="tag tag-teal">SQLite</span>
+        <span class="tag tag-amber">Canvas</span>
+      </div>
+      <div class="project-meta">
+        <div>
+          <div class="project-meta-label">Role</div>
+          <div class="project-meta-value">Full-Stack Developer / Designer</div>
+        </div>
+        <div>
+          <div class="project-meta-label">Status</div>
+          <div class="project-meta-value" style="color: var(--emerald)">Live — v1.8</div>
+        </div>
+        <div>
+          <div class="project-meta-label">Stack</div>
+          <div class="project-meta-value">Python / HTML / CSS / JS / SQLite</div>
+        </div>
+        <div>
+          <div class="project-meta-label">Port</div>
+          <div class="project-meta-value">51763</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-body">
+    <div class="container">
+
+      <h2>The Problem</h2>
+      <p>
+        When you're running 5+ AI agents simultaneously, you need visibility. Not logs — a live, visual command center that shows what every agent is doing, system health, task status, and activity trends in real time. Existing monitoring tools are either too heavy or too generic.
+      </p>
+
+      <h2>The Solution</h2>
+      <p>
+        Mission Control is a purpose-built operations dashboard. A Python <code>ThreadingHTTPServer</code> pushes snapshots via Server-Sent Events every 5 seconds. The frontend renders everything with vanilla JS — canvas sparklines, SVG radar charts, donut charts, filterable log tables, and a full kanban board. No React, no charting libraries, no build step.
+      </p>
+
+      <div class="highlight-box">
+        <p>✓ Zero npm packages. Zero build tools. Pure Python stdlib + vanilla HTML/CSS/JS.</p>
+      </div>
+
+      <h2>Key Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>Live SSE Feed</h4>
+          <p>Server-Sent Events push full system snapshot every 5s. Auto-fallback to polling if SSE drops.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Canvas Sparklines</h4>
+          <p>Per-agent activity sparklines drawn to canvas with gradient fill, glow dot, and retina scaling.</p>
+        </div>
+        <div class="feature-card">
+          <h4>SVG Radar Chart</h4>
+          <p>Agent activity distribution visualized as animated radar with concentric rings and sweep line.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Kanban Task Board</h4>
+          <p>Full CRUD task board backed by SQLite. Optimistic UI updates with server confirmation.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Filterable Log Tables</h4>
+          <p>Agent activity logs with filter-by-agent. State cached in memory, no re-fetch on filter.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Dark Glassmorphism</h4>
+          <p>Frosted glass cards, gradient backgrounds, per-agent accent colors, hover glow effects.</p>
+        </div>
+      </div>
+
+      <h2>Architecture</h2>
+      <table class="tech-table">
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Technology</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Backend</td>
+            <td>Python ThreadingHTTPServer</td>
+            <td>SSE endpoint, REST APIs, read-only SQLite</td>
+          </tr>
+          <tr>
+            <td>Frontend</td>
+            <td>Vanilla HTML/CSS/JS</td>
+            <td>No frameworks, no build step</td>
+          </tr>
+          <tr>
+            <td>Data</td>
+            <td>SQLite (read-only)</td>
+            <td>Agent logs, task board, cron jobs</td>
+          </tr>
+          <tr>
+            <td>Visualization</td>
+            <td>Canvas API + SVG</td>
+            <td>Sparklines, donut charts, radar — all hand-rolled</td>
+          </tr>
+          <tr>
+            <td>Styling</td>
+            <td>CSS Custom Properties</td>
+            <td>Glassmorphism, extended palette, responsive</td>
+          </tr>
+          <tr>
+            <td>Tabs</td>
+            <td>Overview / Agents / Tasks / Schedule / Content</td>
+            <td>5-tab navigation with panel switching</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Design System</h2>
+      <p>
+        Extended 9-color palette (violet, cyan, emerald, amber, rose, lime, teal, orange, sky) mapped to agents and UI states. Every card has a top-border accent. Health bars use glossy sheen gradients. The nav features a spinning conic-gradient logo animation and gradient text. All contrast ratios verified WCAG AA+.
+      </p>
+
+      <h2>Evolution</h2>
+      <p>
+        Started as a simple status page. 8 major versions later: added SSE, kanban board, content viewer, cron job display, per-agent breakdowns, sparklines, radar chart, and the full extended color palette. Each version backed up before changes. The dashboard is now the single pane of glass for the entire AgentOS system.
+      </p>
+
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="project-nav">
+      <a href="rentnaija.html" class="project-nav-link">
+        <span>← Previous</span>
+        RentNaija
+      </a>
+      <a href="agentos.html" class="project-nav-link next">
+        <span>Next →</span>
+        AgentOS
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Starlight480 · <a href="https://github.com/Starlight480" target="_blank" rel="noopener">GitHub</a></p>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js"></script>
+</body>
+</html>

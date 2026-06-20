@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Starlight480 — Web Design & Development Portfolio</title>
+  <meta name="description" content="Portfolio of web design and development projects by Starlight480. Specializing in dark glassmorphism UIs, full-stack web apps, and real-time dashboards.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* --- Hero --- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(167,139,250,0.12) 0%, transparent 70%);
+      top: 10%;
+      right: -100px;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(125,211,252,0.08) 0%, transparent 70%);
+      bottom: 10%;
+      left: -80px;
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--emerald);
+      margin-bottom: var(--space-lg);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 8px var(--emerald);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero h1 { margin-bottom: var(--space-lg); }
+    .hero h1 .line { display: block; }
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--text-body);
+      max-width: 50ch;
+      margin-bottom: var(--space-xl);
+    }
+    .hero-cta { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+    .hero-stats {
+      display: flex;
+      gap: var(--space-2xl);
+      margin-top: var(--space-3xl);
+      padding-top: var(--space-xl);
+      border-top: 1px solid var(--border);
+    }
+    .hero-stat-num {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-heading);
+    }
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: var(--space-xs);
+    }
+
+    /* --- Project Card --- */
+    .project-card {
+      padding: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      height: 100%;
+    }
+    .project-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .project-card-icon.violet { background: var(--violet-dim); color: var(--violet); }
+    .project-card-icon.cyan { background: var(--cyan-dim); color: var(--cyan); }
+    .project-card-icon.emerald { background: var(--emerald-dim); color: var(--emerald); }
+    .project-card-icon.amber { background: var(--amber-dim); color: var(--amber); }
+    .project-card-icon.rose { background: var(--rose-dim); color: var(--rose); }
+    .project-card-icon.teal { background: var(--teal-dim); color: var(--teal); }
+    .project-card h3 { margin-bottom: var(--space-xs); }
+    .project-card p { font-size: 0.9rem; color: var(--text-body); flex-grow: 1; }
+    .project-card-tags { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: auto; }
+    .project-card-link {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--violet);
+      margin-top: var(--space-md);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      transition: gap 0.2s;
+    }
+    .project-card-link:hover { gap: var(--space-sm); }
+
+    /* --- Tech Strip --- */
+    .tech-strip {
+      padding: var(--space-2xl) 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .tech-track {
+      display: flex;
+      gap: var(--space-2xl);
+      animation: scroll 30s linear infinite;
+      width: max-content;
+    }
+    .tech-track span {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* --- CTA Section --- */
+    .cta-section { text-align: center; }
+    .cta-section h2 { margin-bottom: var(--space-md); }
+    .cta-section p { margin: 0 auto var(--space-xl); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">starlight<span>480</span></a>
+      <div class="flex flex-center" style="gap: var(--space-lg);">
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Projects</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="about.html#contact">Contact</a></li>
+        </ul>
+        <div class="theme-toggle">
+          <button class="theme-toggle-btn" id="theme-toggle-btn" type="button" aria-label="Switch to liquid crystal">
+            <span class="theme-toggle-icon theme-toggle-icon--moon active">●</span>
+            <span class="theme-toggle-thumb"></span>
+            <span class="theme-toggle-icon theme-toggle-icon--sun">○</span>
+          </button>
+          <span class="theme-toggle-label">Theme</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-eyebrow">Available for work</div>
+      <h1>
+        <span class="line">Web Design</span>
+        <span class="line text-gradient">& Development</span>
+      </h1>
+      <p class="hero-desc">
+        I build fast, beautiful web experiences — from real-time dashboards to full-stack platforms. Dark glassmorphism, clean code, zero fluff.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="about.html#contact" class="btn btn-ghost">Get in Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">3+</div>
+          <div class="hero-stat-label">Live Projects</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">Client Satisfaction</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">24h</div>
+          <div class="hero-stat-label">Avg Response</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STRIP -->
+  <div class="tech-strip">
+    <div class="tech-track">
+      <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Python</span>
+      <span>Supabase</span><span>Firebase</span><span>Vercel</span><span>Paystack</span>
+      <span>SSE</span><span>SQLite</span><span>Node.js</span><span>REST APIs</span>
+      <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Python</span>
+      <span>Supabase</span><span>Firebase</span><span>Vercel</span><span>Paystack</span>
+      <span>SSE</span><span>SQLite</span><span>Node.js</span><span>REST APIs</span>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-label">Selected Work</div>
+      <h2 class="section-title">Projects</h2>
+      <p class="section-desc mb-lg">A mix of web design, full-stack development, and real-time systems — each built from scratch.</p>
+
+      <div class="grid-3">
+
+        <div class="glass project-card">
+          <div class="project-card-icon violet">R</div>
+          <h3>RentNaija</h3>
+          <p>Hyper-local rental platform for Ajah, Lagos. Verified direct landlord listings with zero agent fees. Full-stack with Supabase, Firebase, and Paystack.</p>
+          <div class="project-card-tags">
+            <span class="tag tag-violet">Full-Stack</span>
+            <span class="tag tag-cyan">Supabase</span>
+            <span class="tag tag-amber">Paystack</span>
+            <span class="tag tag-emerald">Firebase</span>
+          </div>
+          <a href="projects/rentnaija.html" class="project-card-link">View Case Study →</a>
+        </div>
+
+        <div class="glass project-card">
+          <div class="project-card-icon cyan">M</div>
+          <h3>Mission Control</h3>
+          <p>Real-time multi-agent operations dashboard. Live SSE feeds, dark glassmorphism UI, canvas sparklines, and SQLite-backed task management.</p>
+          <div class="project-card-tags">
+            <span class="tag tag-cyan">Python</span>
+            <span class="tag tag-violet">SSE</span>
+            <span class="tag tag-rose">Dashboard</span>
+            <span class="tag tag-teal">SQLite</span>
+          </div>
+          <a href="projects/mission-control.html" class="project-card-link">View Case Study →</a>
+        </div>
+
+        <div class="glass project-card">
+          <div class="project-card-icon emerald">A</div>
+          <h3>AgentOS</h3>
+          <p>Multi-agent coordination system with Scout, Scribe, Reach, and Dev agents. Pipeline workflow for research, content, marketing, and development.</p>
+          <div class="project-card-tags">
+            <span class="tag tag-emerald">Multi-Agent</span>
+            <span class="tag tag-orange">Pipeline</span>
+            <span class="tag tag-sky">Automation</span>
+            <span class="tag tag-lime">Hermes</span>
+          </div>
+          <a href="projects/agentos.html" class="project-card-link">View Case Study →</a>
+        </div>
+
+        <div class="glass project-card">
+          <div class="project-card-icon amber">N</div>
+          <h3>NEXUS — Phone Brand Homepage</h3>
+          <p>Premium Apple-inspired homepage for a generic phone brand. Pure HTML/CSS/JS. Scroll-triggered animations, dark/light theme, CSS-generated phone mockups, interactive color picker.</p>
+          <div class="project-card-tags">
+            <span class="tag tag-amber">UI Design</span>
+            <span class="tag tag-violet">CSS</span>
+            <span class="tag tag-cyan">Animation</span>
+            <span class="tag tag-emerald">Vanilla JS</span>
+          </div>
+          <a href="projects/phone-brand/index.html" class="project-card-link" target="_blank" rel="noopener">View Live →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Want to work together?</h2>
+      <p>I'm available for freelance projects, collaborations, and full-time roles.</p>
+      <a href="about.html#contact" class="btn btn-primary">Let's Talk</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Starlight480 · Built with HTML, CSS & JS · <a href="https://github.com/Starlight480" target="_blank" rel="noopener">GitHub</a></p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+</body>
+</html>

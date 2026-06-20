@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgentOS — Starlight480 Portfolio</title>
+  <meta name="description" content="AgentOS: Multi-agent coordination system with Scout, Scribe, Reach, and Dev agents in a pipeline workflow.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .project-hero {
+      padding: 140px 0 var(--space-3xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .project-hero::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(110,231,183,0.1) 0%, transparent 70%);
+      top: 5%;
+      right: -100px;
+      pointer-events: none;
+    }
+    .project-hero-content { position: relative; z-index: 1; }
+    .back-link {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-lg);
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--violet); }
+    .project-hero h1 { margin-bottom: var(--space-md); }
+    .project-hero-desc { font-size: 1.15rem; max-width: 55ch; margin-bottom: var(--space-lg); }
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-lg);
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--border);
+    }
+    .project-meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-xs);
+    }
+    .project-meta-value { color: var(--text-heading); font-weight: 600; font-size: 0.9rem; }
+
+    .project-body { padding: var(--space-3xl) 0; }
+    .project-body h2 {
+      margin-bottom: var(--space-md);
+      padding-top: var(--space-2xl);
+      border-top: 1px solid var(--border);
+    }
+    .project-body h2:first-of-type { border-top: none; padding-top: 0; }
+    .project-body p { margin-bottom: var(--space-md); }
+    .project-body ul { padding-left: var(--space-lg); margin-bottom: var(--space-md); }
+    .project-body li { margin-bottom: var(--space-sm); }
+
+    .agent-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-md);
+      margin: var(--space-lg) 0;
+    }
+    .agent-card {
+      padding: var(--space-lg);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--agent-color, var(--violet));
+    }
+    .agent-card h4 { margin-bottom: var(--space-sm); font-size: 0.95rem; }
+    .agent-card p { font-size: 0.8rem; color: var(--text-muted); }
+    .agent-card .agent-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: var(--space-sm);
+    }
+
+    .pipeline {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      margin: var(--space-lg) 0;
+      padding: var(--space-lg);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+    .pipeline-step {
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .pipeline-arrow { color: var(--text-muted); font-size: 1.2rem; }
+
+    .project-nav {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-2xl) 0;
+      border-top: 1px solid var(--border);
+      margin-top: var(--space-3xl);
+    }
+    .project-nav-link {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-body);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      transition: color 0.2s;
+    }
+    .project-nav-link:hover { color: var(--violet); }
+    .project-nav-link span { font-size: 0.7rem; color: var(--text-muted); }
+    .project-nav-link.next { text-align: right; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-logo">starlight<span>480</span></a>
+      <div class="flex flex-center" style="gap: var(--space-lg);">
+        <ul class="nav-links">
+          <li><a href="../index.html">Projects</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../about.html#contact">Contact</a></li>
+        </ul>
+        <div class="theme-toggle">
+          <button class="theme-toggle-btn" id="theme-toggle-btn" type="button" aria-label="Switch to liquid crystal">
+            <span class="theme-toggle-icon theme-toggle-icon--moon active">●</span>
+            <span class="theme-toggle-thumb"></span>
+            <span class="theme-toggle-icon theme-toggle-icon--sun">○</span>
+          </button>
+          <span class="theme-toggle-label">Theme</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="project-hero">
+    <div class="container project-hero-content">
+      <a href="../index.html" class="back-link">← Back to Projects</a>
+      <div class="tag tag-emerald mb-md">Multi-Agent System</div>
+      <h1>AgentOS</h1>
+      <p class="project-hero-desc">
+        Multi-agent coordination system. Four specialized agents — Scout, Scribe, Reach, Dev — working in a pipeline to research, create, market, and build.
+      </p>
+      <div class="project-card-tags mb-lg">
+        <span class="tag tag-emerald">Multi-Agent</span>
+        <span class="tag tag-orange">Pipeline</span>
+        <span class="tag tag-sky">Automation</span>
+        <span class="tag tag-lime">Hermes</span>
+        <span class="tag tag-violet">Orchestration</span>
+      </div>
+      <div class="project-meta">
+        <div>
+          <div class="project-meta-label">Role</div>
+          <div class="project-meta-value">System Architect / Developer</div>
+        </div>
+        <div>
+          <div class="project-meta-label">Status</div>
+          <div class="project-meta-value" style="color: var(--emerald)">Live — Production</div>
+        </div>
+        <div>
+          <div class="project-meta-label">Stack</div>
+          <div class="project-meta-value">Hermes Agent / Python / Telegram / Discord</div>
+        </div>
+        <div>
+          <div class="project-meta-label">Agents</div>
+          <div class="project-meta-value">4 Active</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-body">
+    <div class="container">
+
+      <h2>The Problem</h2>
+      <p>
+        Running a startup solo means wearing every hat: researcher, writer, marketer, developer. Context-switching kills productivity. What if each role was handled by a specialized agent that never gets tired, never forgets, and hands off cleanly to the next?
+      </p>
+
+      <h2>The Solution</h2>
+      <p>
+        AgentOS is a multi-agent coordination system built on Hermes Agent. An Orchestrator manages task distribution across four specialized subagents. Each agent has a defined role, a color identity, and a handoff protocol. Tasks flow through a pipeline: Scout → Scribe → Reach → Dev.
+      </p>
+
+      <h2>The Agents</h2>
+      <div class="agent-grid">
+        <div class="agent-card" style="--agent-color: #7DD3FC">
+          <h4><span class="agent-color" style="background: #7DD3FC"></span>Scout</h4>
+          <p>Research & reconnaissance. Market analysis, competitor reconnaissance, data gathering. Outputs structured research briefs.</p>
+        </div>
+        <div class="agent-card" style="--agent-color: #F472B6">
+          <h4><span class="agent-color" style="background: #F472B6"></span>Scribe</h4>
+          <p>Content creation. Blog posts, social copy, SEO content, email drafts. Takes Scout's research and turns it into publishable content.</p>
+        </div>
+        <div class="agent-card" style="--agent-color: #FBBF24">
+          <h4><span class="agent-color" style="background: #FBBF24"></span>Reach</h4>
+          <p>Marketing & outreach. Social media campaigns, community engagement, growth strategy. Amplifies Scribe's content across channels.</p>
+        </div>
+        <div class="agent-card" style="--agent-color: #E879F9">
+          <h4><span class="agent-color" style="background: #E879F9"></span>Dev</h4>
+          <p>Development & infrastructure. Full-stack builds, deployments, debugging, DevOps. Receives specs from the pipeline and ships code.</p>
+        </div>
+      </div>
+
+      <h2>Pipeline Workflow</h2>
+      <p>
+        Tasks don't just get assigned — they flow. Each agent processes its specialty and hands off to the next with structured context. The Orchestrator tracks progress, manages checkpoints, and handles approvals.
+      </p>
+
+      <div class="pipeline">
+        <div class="pipeline-step" style="background: var(--cyan-dim); color: var(--cyan)">Scout</div>
+        <span class="pipeline-arrow">→</span>
+        <div class="pipeline-step" style="background: var(--rose-dim); color: var(--rose)">Scribe</div>
+        <span class="pipeline-arrow">→</span>
+        <div class="pipeline-step" style="background: var(--amber-dim); color: var(--amber)">Reach</div>
+        <span class="pipeline-arrow">→</span>
+        <div class="pipeline-step" style="background: rgba(232,121,249,0.15); color: #E879F9">Dev</div>
+      </div>
+
+      <h2>Key Features</h2>
+      <ul>
+        <li><strong>Orchestrator pattern:</strong> Central coordinator manages task distribution, checkpoints, and approvals</li>
+        <li><strong>Agent isolation:</strong> Each agent runs in its own context with dedicated skills and toolsets</li>
+        <li><strong>Pipeline handoff:</strong> Structured context passing between agents — no information loss</li>
+        <li><strong>Activity logging:</strong> SQLite-backed logging of every agent action, searchable and filterable</li>
+        <li><strong>Mission Control integration:</strong> Real-time dashboard shows live agent status, task progress, and system health</li>
+        <li><strong>Multi-platform:</strong> Agents communicate via Telegram, Discord, and internal APIs</li>
+        <li><strong>Cron scheduling:</strong> Recurring tasks (log cleanup, reports, health checks) via Hermes cron</li>
+      </ul>
+
+      <h2>Design Philosophy</h2>
+      <p>
+        Each agent has a color identity (Scout = cyan, Scribe = pink, Reach = amber, Dev = purple) that carries through the entire system — dashboard cards, log badges, activity feeds. This isn't decoration; it's functional visual encoding that makes it instantly clear which agent did what.
+      </p>
+      <p>
+        The system is designed for a solo operator who needs to function like a team. Every agent interaction is logged, every task is tracked, and the Orchestrator ensures nothing falls through the cracks.
+      </p>
+
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="project-nav">
+      <a href="mission-control.html" class="project-nav-link">
+        <span>← Previous</span>
+        Mission Control
+      </a>
+      <a href="../index.html" class="project-nav-link next">
+        <span>Next →</span>
+        All Projects
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Starlight480 · <a href="https://github.com/Starlight480" target="_blank" rel="noopener">GitHub</a></p>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Starlight480 Portfolio</title>
+  <meta name="description" content="About Starlight480 — web designer and developer specializing in dark glassmorphism UIs, full-stack platforms, and real-time systems.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .about-hero {
+      padding: 140px 0 var(--space-3xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(167,139,250,0.08) 0%, transparent 70%);
+      top: 5%;
+      right: -100px;
+      pointer-events: none;
+    }
+    .about-hero-content { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3xl); align-items: center; }
+    @media (max-width: 768px) {
+      .about-hero-content { grid-template-columns: 1fr; }
+    }
+    .about-avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--violet), var(--cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 3rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: var(--space-lg);
+    }
+    .about-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--emerald);
+      margin-bottom: var(--space-md);
+    }
+    .about-hero h1 { margin-bottom: var(--space-md); }
+    .about-hero p { font-size: 1.05rem; margin-bottom: var(--space-md); }
+
+    .about-body { padding: var(--space-3xl) 0; }
+    .about-body h2 {
+      margin-bottom: var(--space-md);
+      padding-top: var(--space-2xl);
+      border-top: 1px solid var(--border);
+    }
+    .about-body h2:first-of-type { border-top: none; padding-top: 0; }
+    .about-body p { margin-bottom: var(--space-md); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-md);
+      margin: var(--space-lg) 0;
+    }
+    .skill-item {
+      padding: var(--space-md) var(--space-lg);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-heading);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .skill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .contact-section {
+      padding: var(--space-3xl) 0;
+      border-top: 1px solid var(--border);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+    }
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    .contact-form { display: flex; flex-direction: column; gap: var(--space-md); }
+    .contact-form label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+    .contact-form input,
+    .contact-form textarea {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      color: var(--text-heading);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--violet);
+    }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+    .contact-info p { margin-bottom: var(--space-md); }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-md);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-heading);
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+      margin-bottom: var(--space-sm);
+    }
+    .contact-link:hover { border-color: var(--violet); color: var(--violet); }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">starlight<span>480</span></a>
+      <div class="flex flex-center" style="gap: var(--space-lg);">
+        <ul class="nav-links">
+          <li><a href="index.html">Projects</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="theme-toggle">
+          <button class="theme-toggle-btn" id="theme-toggle-btn" type="button" aria-label="Switch to liquid crystal">
+            <span class="theme-toggle-icon theme-toggle-icon--moon active">●</span>
+            <span class="theme-toggle-thumb"></span>
+            <span class="theme-toggle-icon theme-toggle-icon--sun">○</span>
+          </button>
+          <span class="theme-toggle-label">Theme</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="about-hero">
+    <div class="container about-hero-content">
+      <div>
+        <div class="about-eyebrow">// about</div>
+        <h1>Starlight480</h1>
+        <p>
+          Web designer and developer based in Lagos, Nigeria. I build fast, beautiful web experiences — from real-time dashboards to full-stack rental platforms.
+        </p>
+        <p>
+          I specialize in dark glassmorphism UIs, zero-dependency systems, and shipping products that actually work. No templates. No fluff. Just clean code and intentional design.
+        </p>
+      </div>
+      <div class="flex flex-center">
+        <div class="about-avatar">S4</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-body">
+    <div class="container">
+
+      <h2>What I Do</h2>
+      <div class="skills-grid">
+        <div class="skill-item"><span class="skill-dot" style="background: var(--violet)"></span>Web Design</div>
+        <div class="skill-item"><span class="skill-dot" style="background: var(--cyan)"></span>Frontend Development</div>
+        <div class="skill-item"><span class="skill-dot" style="background: var(--emerald)"></span>Backend Development</div>
+        <div class="skill-item"><span class="skill-dot" style="background: var(--amber)"></span>UI/UX Design</div>
+        <div class="skill-item"><span class="skill-dot" style="background: var(--rose)"></span>Dashboard Design</div>
+        <div class="skill-item"><span class="skill-dot" style="background: var(--teal)"></span>API Integration</div>
+        <div class="skill-item"><span class="skill-dot" style="background: var(--lime)"></span>Systems Architecture</div>
+        <div class="skill-item"><span class="skill-dot" style="background: var(--orange)"></span>Payment Integration</div>
+      </div>
+
+      <h2>Tech Stack</h2>
+      <div class="skills-grid">
+        <div class="skill-item"><span class="skill-dot" style="background: var(--violet)"></span>HTML / CSS / JavaScript</div>
+        <div class="skill-item"><span class="skill-dot" style="background: var(--cyan)"></span>Python</div>
+        <div class="skill-item"><span class="skill-dot" style="background: var(--emerald)"></span>Supabase</div>
+        <div class="skill-item"><span class="skill-dot" style="background: var(--amber)"></span>Firebase</div>
+        <div class="skill-item"><span class="skill-dot" style="background: var(--rose)"></span>Vercel</div>
+        <div class="skill-item"><span class="skill-dot" style="background: var(--teal)"></span>Paystack</div>
+        <div class="skill-item"><span class="skill-dot" style="background: var(--lime)"></span>Node.js</div>
+        <div class="skill-item"><span class="skill-dot" style="background: var(--sky)"></span>SQLite</div>
+      </div>
+
+      <h2>Approach</h2>
+      <p>
+        Every project starts with the problem, not the tech. I design from context — existing brand, user needs, business constraints — not from vibes. Dark glassmorphism isn't a default; it's a deliberate choice when it serves the product.
+      </p>
+      <p>
+        I ship fast, iterate based on real data, and keep dependencies minimal. The best code is the code you don't write. The best design is the one users don't have to think about.
+      </p>
+
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title mb-lg">Contact</h2>
+      <div class="contact-grid">
+        <div>
+          <p>Interested in working together? Have a project in mind? Reach out — I respond within 24 hours.</p>
+          <a href="mailto:hello@starlight480.dev" class="contact-link">hello@starlight480.dev</a>
+          <a href="https://github.com/Starlight480" target="_blank" rel="noopener" class="contact-link">github.com/Starlight480</a>
+          <a href="https://t.me/Starlight480" target="_blank" rel="noopener" class="contact-link">t.me/Starlight480</a>
+        </div>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks! This is a demo form — wire it up to your backend.');">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your name" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="you@example.com" required>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="align-self: flex-start">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Starlight480 · Built with HTML, CSS & JS · <a href="https://github.com/Starlight480" target="_blank" rel="noopener">GitHub</a></p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+</body>
+</html>

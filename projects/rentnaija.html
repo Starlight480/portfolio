@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RentNaija — Starlight480 Portfolio</title>
+  <meta name="description" content="RentNaija: Hyper-local rental platform for Ajah, Lagos. Verified direct landlord listings with zero agent fees.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .project-hero {
+      padding: 140px 0 var(--space-3xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .project-hero::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(167,139,250,0.1) 0%, transparent 70%);
+      top: 5%;
+      right: -100px;
+      pointer-events: none;
+    }
+    .project-hero-content { position: relative; z-index: 1; }
+    .back-link {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-lg);
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--violet); }
+    .project-hero h1 { margin-bottom: var(--space-md); }
+    .project-hero-desc { font-size: 1.15rem; max-width: 55ch; margin-bottom: var(--space-lg); }
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-lg);
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--border);
+    }
+    .project-meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-xs);
+    }
+    .project-meta-value { color: var(--text-heading); font-weight: 600; font-size: 0.9rem; }
+
+    .project-body { padding: var(--space-3xl) 0; }
+    .project-body h2 {
+      margin-bottom: var(--space-md);
+      padding-top: var(--space-2xl);
+      border-top: 1px solid var(--border);
+    }
+    .project-body h2:first-of-type { border-top: none; padding-top: 0; }
+    .project-body p { margin-bottom: var(--space-md); }
+    .project-body ul { padding-left: var(--space-lg); margin-bottom: var(--space-md); }
+    .project-body li { margin-bottom: var(--space-sm); }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-md);
+      margin: var(--space-lg) 0;
+    }
+    .feature-card {
+      padding: var(--space-lg);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    .feature-card h4 { margin-bottom: var(--space-sm); font-size: 0.95rem; }
+    .feature-card p { font-size: 0.85rem; color: var(--text-muted); }
+
+    .tech-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--space-lg) 0;
+    }
+    .tech-table th, .tech-table td {
+      padding: var(--space-md);
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .tech-table th {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .tech-table td { font-size: 0.9rem; }
+    .tech-table tr:last-child td { border-bottom: none; }
+
+    .project-nav {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-2xl) 0;
+      border-top: 1px solid var(--border);
+      margin-top: var(--space-3xl);
+    }
+    .project-nav-link {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-body);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      transition: color 0.2s;
+    }
+    .project-nav-link:hover { color: var(--violet); }
+    .project-nav-link span { font-size: 0.7rem; color: var(--text-muted); }
+    .project-nav-link.next { text-align: right; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-logo">starlight<span>480</span></a>
+      <div class="flex flex-center" style="gap: var(--space-lg);">
+        <ul class="nav-links">
+          <li><a href="../index.html">Projects</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../about.html#contact">Contact</a></li>
+        </ul>
+        <div class="theme-toggle">
+          <button class="theme-toggle-btn" id="theme-toggle-btn" type="button" aria-label="Switch to liquid crystal">
+            <span class="theme-toggle-icon theme-toggle-icon--moon active">●</span>
+            <span class="theme-toggle-thumb"></span>
+            <span class="theme-toggle-icon theme-toggle-icon--sun">○</span>
+          </button>
+          <span class="theme-toggle-label">Theme</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="project-hero">
+    <div class="container project-hero-content">
+      <a href="../index.html" class="back-link">← Back to Projects</a>
+      <div class="tag tag-violet mb-md">Full-Stack Web App</div>
+      <h1>RentNaija</h1>
+      <p class="project-hero-desc">
+        Hyper-local rental platform for Ajah, Lagos. Verified direct landlord listings with zero agent fees — cutting out the middleman.
+      </p>
+      <div class="project-card-tags mb-lg">
+        <span class="tag tag-cyan">Supabase</span>
+        <span class="tag tag-amber">Paystack</span>
+        <span class="tag tag-emerald">Firebase</span>
+        <span class="tag tag-rose">Vercel</span>
+        <span class="tag tag-teal">Node.js</span>
+      </div>
+      <div class="project-meta">
+        <div>
+          <div class="project-meta-label">Role</div>
+          <div class="project-meta-value">Full-Stack Developer</div>
+        </div>
+        <div>
+          <div class="project-meta-label">Status</div>
+          <div class="project-meta-value" style="color: var(--emerald)">In Development</div>
+        </div>
+        <div>
+          <div class="project-meta-label">Stack</div>
+          <div class="project-meta-value">HTML / Supabase / Firebase / Paystack</div>
+        </div>
+        <div>
+          <div class="project-meta-label">Location</div>
+          <div class="project-meta-value">Ajah, Lagos, Nigeria</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-body">
+    <div class="container">
+
+      <h2>The Problem</h2>
+      <p>
+        Renting in Lagos is broken. Tenants pay 10-15% of annual rent as agent fees — that's ₦150K+ on a ₦1M apartment — for zero guarantee. Listings are unverified, landlords are unreachable, and fraud is rampant. The Ajah corridor, a fast-growing student-heavy suburb, is especially underserved.
+      </p>
+
+      <h2>The Solution</h2>
+      <p>
+        RentNaija eliminates the agent entirely. Every landlord is physically verified. Every listing is confirmed. Tenants browse, contact landlords directly, and pay zero agent fees. The platform handles discovery, verification, and payments — not intermediation.
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>Verified Landlords</h4>
+          <p>Physical verification process ensures every landlord is real and every listing is legitimate.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Zero Agent Fees</h4>
+          <p>Direct landlord-tenant connection. No middleman, no hidden costs, no pressure tactics.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Paystack Integration</h4>
+          <p>Secure rent payments and deposit escrow via Paystack. Full transaction history for both parties.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Real-Time Notifications</h4>
+          <p>Firebase Cloud Messaging powers instant alerts for new listings, messages, and verification updates.</p>
+        </div>
+      </div>
+
+      <h2>Tech Architecture</h2>
+      <table class="tech-table">
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>Technology</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Frontend</td>
+            <td>HTML / CSS / Vanilla JS</td>
+            <td>Static site, fast loads, mobile-first</td>
+          </tr>
+          <tr>
+            <td>Hosting</td>
+            <td>Vercel</td>
+            <td>Edge deployment, zero config</td>
+          </tr>
+          <tr>
+            <td>Auth</td>
+            <td>Supabase Auth</td>
+            <td>Email + phone OTP, session management</td>
+          </tr>
+          <tr>
+            <td>Database</td>
+            <td>Supabase PostgreSQL</td>
+            <td>Landlords, properties, listings, users</td>
+          </tr>
+          <tr>
+            <td>Notifications</td>
+            <td>Firebase Cloud Messaging</td>
+            <td>Push notifications for listings & messages</td>
+          </tr>
+          <tr>
+            <td>Payments</td>
+            <td>Paystack</td>
+            <td>Rent payments, deposit escrow</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Design Approach</h2>
+      <p>
+        Dark glassmorphism UI — deep backgrounds, frosted cards, emerald accents for trust, amber for CTAs. Every design decision serves the Nigerian market: high contrast for outdoor mobile use, large touch targets, minimal data usage. WCAG AA contrast ratios verified across all text.
+      </p>
+
+      <h2>Key Features</h2>
+      <ul>
+        <li>Landlord registration with ID verification</li>
+        <li>Property listing CRUD with image uploads</li>
+        <li>Search and filter by location, price, bedrooms</li>
+        <li>Direct in-app messaging (tenant ↔ landlord)</li>
+        <li>Paystack-powered rent payment flow</li>
+        <li>Admin dashboard for verification management</li>
+        <li>Featured listings for premium placement</li>
+        <li>View count and analytics per listing</li>
+      </ul>
+
+      <h2>Target Milestone</h2>
+      <p>
+        <strong>10 verified landlords</strong> listed before semester resumes (late July 2026). This is the critical mass needed to make the platform useful for incoming students and young professionals in the Ajah corridor.
+      </p>
+
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="project-nav">
+      <a href="../index.html" class="project-nav-link">
+        <span>← Previous</span>
+        All Projects
+      </a>
+      <a href="mission-control.html" class="project-nav-link next">
+        <span>Next →</span>
+        Mission Control
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Starlight480 · <a href="https://github.com/Starlight480" target="_blank" rel="noopener">GitHub</a></p>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js"></script>
+</body>
+</html>
