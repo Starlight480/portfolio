@@ -13,7 +13,7 @@
     <!-- ========== NAVBAR ========== -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="nav-logo">
+            <a href="#hero" class="nav-logo">
                 <span class="logo-icon">◈</span>
                 <span class="logo-text">NEXUS</span>
             </a>
@@ -23,7 +23,6 @@
                 <li><a href="#features" class="nav-link">Features</a></li>
                 <li><a href="#specs" class="nav-link">Specs</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
-                <li><a href="#cta" class="nav-link">Buy</a></li>
             </ul>
             <div class="nav-actions">
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -39,7 +38,6 @@
         </div>
     </nav>
 
-    <!-- Mobile slide-in menu -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-overlay" id="mobileOverlay"></div>
         <div class="mobile-menu-panel" id="mobilePanel">
@@ -49,7 +47,6 @@
                 <li><a href="#features" class="mobile-nav-link">Features</a></li>
                 <li><a href="#specs" class="mobile-nav-link">Specs</a></li>
                 <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
-                <li><a href="#cta" class="mobile-nav-link">Buy</a></li>
             </ul>
         </div>
     </div>
@@ -71,9 +68,7 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="phone phone-hero">
-                    <img src="images/phone-hero.jpg" alt="NEXUS smartphone" class="phone-img" loading="eager" width="300" height="600">
-                </div>
+                <img src="images/phone-hero.jpg" alt="NEXUS Pro" class="phone-img phone-hero">
             </div>
         </div>
         <div class="hero-scroll-indicator">
@@ -90,85 +85,79 @@
             </div>
             <div class="product-grid">
                 <!-- NEXUS Pro -->
-                <div class="product-card" data-scroll-animation="fade-up" data-delay="0">
+                <a href="pages/nexus-pro.html" class="product-card" data-scroll-animation="fade-up" data-delay="0">
                     <div class="product-visual">
-                        <div class="phone phone-pro">
-                            <img src="images/phone-pro.jpg" alt="NEXUS Pro smartphone" class="phone-img" loading="lazy" width="200" height="400">
-                        </div>
+                        <img src="images/phone-pro.jpg" alt="NEXUS Pro" class="phone-img phone-pro">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">NEXUS Pro</h3>
                         <p class="product-tagline">Power without compromise</p>
                         <p class="product-price">From $999</p>
                         <div class="product-colors">
-                            <span class="color-dot active" data-color="midnight" style="background:#1a1a2e;"></span>
-                            <span class="color-dot" data-color="silver" style="background:#c0c0c0;"></span>
-                            <span class="color-dot" data-color="gold" style="background:#d4a574;"></span>
-                            <span class="color-dot" data-color="blue" style="background:#4a6fa5;"></span>
+                            <span class="color-dot" style="background:#1a1a2e;" title="Midnight Black"></span>
+                            <span class="color-dot" style="background:#c0c0c0;" title="Lunar Silver"></span>
+                            <span class="color-dot" style="background:#d4a574;" title="Solar Gold"></span>
+                            <span class="color-dot" style="background:#4a6fa5;" title="Ocean Blue"></span>
                         </div>
                         <ul class="product-specs">
-                            <li><span class="spec-label">Display</span><span class="spec-value">6.7" FlowDisplay</span></li>
-                            <li><span class="spec-label">Chip</span><span class="spec-value">NEXUS X1</span></li>
-                            <li><span class="spec-label">Camera</span><span class="spec-value">108MP Triple</span></li>
-                            <li><span class="spec-label">Battery</span><span class="spec-value">5000mAh</span></li>
+                            <li><span class="spec-label">Display</span><span class="spec-value">6.7" Quantum XDR</span></li>
+                            <li><span class="spec-label">Chip</span><span class="spec-value">Titan S1</span></li>
+                            <li><span class="spec-label">Camera</span><span class="spec-value">Vision Pro 50MP</span></li>
+                            <li><span class="spec-label">Battery</span><span class="spec-value">4,870mAh</span></li>
                         </ul>
-                        <a href="pages/pro.html" class="product-link">Learn more →</a>
+                        <span class="product-link">Learn more →</span>
                     </div>
-                </div>
+                </a>
 
                 <!-- NEXUS Air -->
-                <div class="product-card" data-scroll-animation="fade-up" data-delay="150">
+                <a href="pages/nexus-air.html" class="product-card" data-scroll-animation="fade-up" data-delay="150">
                     <div class="product-visual">
-                        <div class="phone phone-air">
-                            <img src="images/phone-air.jpg" alt="NEXUS Air smartphone" class="phone-img" loading="lazy" width="200" height="400">
-                        </div>
+                        <img src="images/phone-air.jpg" alt="NEXUS Air" class="phone-img phone-air">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">NEXUS Air</h3>
                         <p class="product-tagline">Lightness, perfected</p>
                         <p class="product-price">From $749</p>
                         <div class="product-colors">
-                            <span class="color-dot active" data-color="white" style="background:#f5f5f0;"></span>
-                            <span class="color-dot" data-color="rose" style="background:#e8c4c4;"></span>
-                            <span class="color-dot" data-color="mint" style="background:#b8d8c8;"></span>
-                            <span class="color-dot" data-color="lavender" style="background:#c4b8d8;"></span>
+                            <span class="color-dot" style="background:#f5f5f0;" title="Cloud White"></span>
+                            <span class="color-dot" style="background:#e8c4c4;" title="Blush Rose"></span>
+                            <span class="color-dot" style="background:#b8d8c8;" title="Seafoam Mint"></span>
+                            <span class="color-dot" style="background:#c4b8d8;" title="Orchid Lavender"></span>
                         </div>
                         <ul class="product-specs">
-                            <li><span class="spec-label">Display</span><span class="spec-value">6.3" FlexView</span></li>
-                            <li><span class="spec-label">Chip</span><span class="spec-value">NEXUS A16</span></li>
-                            <li><span class="spec-label">Camera</span><span class="spec-value">64MP Dual</span></li>
-                            <li><span class="spec-label">Battery</span><span class="spec-value">4200mAh</span></li>
+                            <li><span class="spec-label">Display</span><span class="spec-value">6.3" Quantum</span></li>
+                            <li><span class="spec-label">Chip</span><span class="spec-value">Titan S1</span></li>
+                            <li><span class="spec-label">Camera</span><span class="spec-value">Vision 48MP</span></li>
+                            <li><span class="spec-label">Battery</span><span class="spec-value">4,000mAh</span></li>
                         </ul>
-                        <a href="pages/air.html" class="product-link">Learn more →</a>
+                        <span class="product-link">Learn more →</span>
                     </div>
-                </div>
+                </a>
 
                 <!-- NEXUS Lite -->
-                <div class="product-card" data-scroll-animation="fade-up" data-delay="300">
+                <a href="pages/nexus-lite.html" class="product-card" data-scroll-animation="fade-up" data-delay="300">
                     <div class="product-visual">
-                        <div class="phone phone-lite">
-                            <img src="images/phone-lite.jpg" alt="NEXUS Lite smartphone" class="phone-img" loading="lazy" width="200" height="400">
-                        </div>
+                        <img src="images/phone-lite.jpg" alt="NEXUS Lite" class="phone-img phone-lite">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">NEXUS Lite</h3>
                         <p class="product-tagline">Essentials, elevated</p>
                         <p class="product-price">From $499</p>
                         <div class="product-colors">
-                            <span class="color-dot active" data-color="black" style="background:#2d2d2d;"></span>
-                            <span class="color-dot" data-color="red" style="background:#c0392b;"></span>
-                            <span class="color-dot" data-color="green" style="background:#27ae60;"></span>
-                            <span class="color-dot" data-color="yellow" style="background:#f1c40f;"></span>
+                            <span class="color-dot" style="background:#2d2d2d;" title="Graphite Black"></span>
+                            <span class="color-dot" style="background:#c0392b;" title="Crimson Red"></span>
+                            <span class="color-dot" style="background:#27ae60;" title="Forest Green"></span>
+                            <span class="color-dot" style="background:#f1c40f;" title="Sunflower Yellow"></span>
                         </div>
                         <ul class="product-specs">
-                            <li><span class="spec-label">Display</span><span class="spec-value">6.1" ClearView</span></li>
-                            <li><span class="spec-label">Chip</span><span class="spec-value">NEXUS A15</span></li>
-                            <li><span class="spec-label">Camera</span><span class="spec-value">48MP Dual</span></li>
-                            <li><span class="spec-label">Battery</span><span class="spec-value">3800mAh</span></li>
+                            <li><span class="spec-label">Display</span><span class="spec-value">6.1" NEXUS Bright</span></li>
+                            <li><span class="spec-label">Chip</span><span class="spec-value">Titan A15</span></li>
+                            <li><span class="spec-label">Camera</span><span class="spec-value">Vision Lite 12MP</span></li>
+                            <li><span class="spec-label">Battery</span><span class="spec-value">3,800mAh</span></li>
                         </ul>
-                        <a href="pages/lite.html" class="product-link">Learn more →</a>
+                        <span class="product-link">Learn more →</span>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -186,17 +175,17 @@
                 <div class="feature-visual">
                     <div class="feature-display-mockup">
                         <div class="mockup-gradient"></div>
-                        <div class="mockup-text">XDR Display</div>
+                        <div class="mockup-text">Quantum XDR</div>
                     </div>
                 </div>
                 <div class="feature-content">
-                    <h3 class="feature-title">Stunning LTPO FlowDisplay</h3>
-                    <p class="feature-desc">Every pixel is a masterpiece. Our LTPO FlowDisplay delivers 2000 nits peak brightness, AdaptiveSync 120Hz adaptive refresh rate, and true-to-life colors that make everything from photos to videos look absolutely breathtaking.</p>
+                    <h3 class="feature-title">NEXUS Quantum XDR Display</h3>
+                    <p class="feature-desc">Every pixel is a masterpiece. Our Quantum XDR display delivers 2200 nits peak HDR brightness, 120Hz adaptive refresh rate, and true-to-life colors that make everything from photos to videos look absolutely breathtaking.</p>
                     <ul class="feature-list">
-                        <li>LTPO FlowDisplay technology</li>
-                        <li>AdaptiveSync 120Hz adaptive refresh</li>
-                        <li>2000 nits peak HDR brightness</li>
-                        <li>CrystalGuard front, tougher than any smartphone glass</li>
+                        <li>Quantum XDR AMOLED technology</li>
+                        <li>120Hz adaptive refresh — scales 1Hz to 120Hz</li>
+                        <li>2200 nits peak HDR brightness</li>
+                        <li>Ceramic Shield 2 — 4x better drop performance</li>
                     </ul>
                 </div>
             </div>
@@ -207,18 +196,18 @@
                     <div class="feature-chip-mockup">
                         <div class="chip-visual">
                             <div class="chip-core"></div>
-                            <div class="chip-label">NEXUS A17</div>
+                            <div class="chip-label">Titan S1</div>
                         </div>
                     </div>
                 </div>
                 <div class="feature-content">
-                    <h3 class="feature-title">NEXUS X1 Quad-Core</h3>
-                    <p class="feature-desc">The fastest chip ever in a smartphone. Built on 4-nanometer technology, the NEXUS X1 Quad-Core delivers extraordinary performance for gaming, computational photography, and AI-powered experiences. Efficiency that means all-day battery life.</p>
+                    <h3 class="feature-title">Titan S1 Chip</h3>
+                    <p class="feature-desc">The fastest chip we've ever built. 3-nanometer technology with 19 billion transistors, 8-core CPU, 6-core GPU with hardware ray tracing, and an 18-core Neural Engine. Desktop-class performance in your pocket.</p>
                     <ul class="feature-list">
-                        <li>4nm process technology</li>
+                        <li>3nm process — 19 billion transistors</li>
                         <li>6-core GPU with hardware ray tracing</li>
-                        <li>16-core NEXUS Neural Engine (NNE)</li>
-                        <li>Up to 40% faster than competition</li>
+                        <li>18-core Neural Engine — 35 trillion ops/sec</li>
+                        <li>40% faster than previous generation</li>
                     </ul>
                 </div>
             </div>
@@ -236,13 +225,13 @@
                     </div>
                 </div>
                 <div class="feature-content">
-                    <h3 class="feature-title">ProVision Camera System</h3>
-                    <p class="feature-desc">Capture life in extraordinary detail. Our 108MP main camera with optical stabilization, 48MP ultra-wide, and 12MP 5x periscope telephoto let you shoot like a professional. LightCapture night mode, SteadyShot video, and 4K FilmScene included.</p>
+                    <h3 class="feature-title">NEXUS Vision Pro Camera</h3>
+                    <p class="feature-desc">Capture life in extraordinary detail. Our 50MP main camera with sensor-shift stabilization, 12MP ultrawide with macro, and 12MP 5x telephoto with LiDAR let you shoot like a professional. 4K Cinematic video at 60fps.</p>
                     <ul class="feature-list">
-                        <li>108MP Main with optical stabilization (OIS)</li>
-                        <li>48MP Ultra Wide with 120° field of view</li>
-                        <li>12MP 5x Periscope Telephoto with OIS</li>
-                        <li>4K FilmScene mode, SteadyShot video</li>
+                        <li>50MP Main with sensor-shift OIS</li>
+                        <li>12MP Ultrawide with macro down to 2cm</li>
+                        <li>12MP 5x Telephoto with 3D sensor-shift OIS</li>
+                        <li>4K Cinematic video, Dolby Vision HDR</li>
                     </ul>
                 </div>
             </div>
@@ -269,27 +258,39 @@
                     <tbody>
                         <tr>
                             <td>Display</td>
-                            <td>6.7" LTPO FlowDisplay</td>
-                            <td>6.3" AMOLED FlexView</td>
-                            <td>6.1" IPS ClearView</td>
+                            <td>6.7" Quantum XDR</td>
+                            <td>6.3" Quantum</td>
+                            <td>6.1" NEXUS Bright</td>
                         </tr>
                         <tr>
                             <td>Chip</td>
-                            <td>NEXUS X1 Quad-Core</td>
-                            <td>NEXUS A16 Fusion</td>
-                            <td>NEXUS A15</td>
+                            <td>Titan S1</td>
+                            <td>Titan S1</td>
+                            <td>Titan A15</td>
                         </tr>
                         <tr>
                             <td>Camera</td>
-                            <td>108MP + 48MP + 12MP</td>
-                            <td>64MP + 12MP</td>
-                            <td>48MP + 5MP</td>
+                            <td>Vision Pro 50MP Triple</td>
+                            <td>Vision 48MP Dual</td>
+                            <td>Vision Lite 12MP Dual</td>
                         </tr>
                         <tr>
                             <td>Battery</td>
-                            <td>5000mAh</td>
-                            <td>4200mAh</td>
-                            <td>3800mAh</td>
+                            <td>4,870mAh</td>
+                            <td>4,000mAh</td>
+                            <td>3,800mAh</td>
+                        </tr>
+                        <tr>
+                            <td>Charging</td>
+                            <td>45W NEXUS Charge</td>
+                            <td>30W NEXUS Charge</td>
+                            <td>20W NEXUS Charge</td>
+                        </tr>
+                        <tr>
+                            <td>Wireless</td>
+                            <td>15W NEXUS AirCharge</td>
+                            <td>15W NEXUS AirCharge</td>
+                            <td>—</td>
                         </tr>
                         <tr>
                             <td>Storage</td>
@@ -298,52 +299,31 @@
                             <td>64GB / 128GB / 256GB</td>
                         </tr>
                         <tr>
+                            <td>Build</td>
+                            <td>Titanium</td>
+                            <td>Aluminum</td>
+                            <td>Aluminum</td>
+                        </tr>
+                        <tr>
                             <td>Water Resistance</td>
                             <td>IP68</td>
                             <td>IP68</td>
-                            <td>IP54</td>
+                            <td>IP67</td>
                         </tr>
                         <tr>
                             <td>Weight</td>
-                            <td>198g</td>
-                            <td>162g</td>
-                            <td>175g</td>
-                        </tr>
-                        <tr>
-                            <td>Colors</td>
-                            <td>Midnight, Silver, Gold, Blue</td>
-                            <td>White, Rose, Mint, Lavender</td>
-                            <td>Black, Red, Green, Yellow</td>
+                            <td>221g</td>
+                            <td>173g</td>
+                            <td>164g</td>
                         </tr>
                         <tr>
                             <td>Starting Price</td>
-                            <td>$1,099</td>
+                            <td>$999</td>
                             <td>$749</td>
-                            <td>$449</td>
+                            <td>$499</td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-
-            <!-- Interactive Color Picker -->
-            <div class="color-picker-section" data-scroll-animation="fade-up">
-                <h3 class="color-picker-title">Customize Your NEXUS Pro</h3>
-                <div class="color-picker-demo">
-                    <div class="phone phone-picker">
-                        <img src="images/phone-pro.jpg" alt="NEXUS Pro color preview" class="phone-img" loading="lazy" width="240" height="480">
-                        <div class="phone-img-tint" id="pickerTint"></div>
-                    </div>
-                    <div class="color-picker-options">
-                        <p class="color-picker-label">Select Color:</p>
-                        <div class="color-picker-dots">
-                            <span class="color-dot picker-dot active" data-color="midnight" data-phone="picker" style="background:#1a1a2e;" title="Midnight"></span>
-                            <span class="color-dot picker-dot" data-color="silver" data-phone="picker" style="background:#c0c0c0;" title="Silver"></span>
-                            <span class="color-dot picker-dot" data-color="gold" data-phone="picker" style="background:#d4a574;" title="Gold"></span>
-                            <span class="color-dot picker-dot" data-color="blue" data-phone="picker" style="background:#4a6fa5;" title="Pacific Blue"></span>
-                        </div>
-                        <p class="color-picker-selected">Selected: <strong id="selectedColorName">Midnight</strong></p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -358,44 +338,47 @@
             <div class="contact-grid">
                 <div class="contact-info">
                     <h3 class="contact-info-title">We'd love to hear from you</h3>
-                    <p class="contact-info-text">Have a question about our products? Want to partner with us? Send us a message and we'll respond within 24 hours.</p>
+                    <p class="contact-info-text">Have questions about NEXUS devices, need support, or want to partner with us? Drop us a message and we'll get back to you within 24 hours.</p>
                     <ul class="contact-details">
                         <li>
                             <span class="contact-icon">✉</span>
-                            <span>inaisrael2009@gmail.com</span>
+                            <span>inoisrael2009@gmail.com</span>
+                        </li>
+                        <li>
+                            <span class="contact-icon">📍</span>
+                            <span>Lagos, Nigeria</span>
+                        </li>
+                        <li>
+                            <span class="contact-icon">🕐</span>
+                            <span>Response within 24 hours</span>
                         </li>
                     </ul>
                 </div>
-                <form class="contact-form" id="contactForm" novalidate>
+                <form class="contact-form" id="contactForm" action="https://nexus-contact-api.onrender.com/api/contact" method="POST">
                     <div class="form-group">
-                        <label for="contactName" class="form-label">Name</label>
-                        <input type="text" id="contactName" name="name" class="form-input" placeholder="Your name" required>
-                        <span class="form-error" id="nameError"></span>
+                        <label class="form-label" for="name">Name</label>
+                        <input class="form-input" type="text" id="name" name="name" placeholder="Your name" required>
                     </div>
                     <div class="form-group">
-                        <label for="contactEmail" class="form-label">Email</label>
-                        <input type="email" id="contactEmail" name="email" class="form-input" placeholder="you@example.com" required>
-                        <span class="form-error" id="emailError"></span>
+                        <label class="form-label" for="email">Email</label>
+                        <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required>
                     </div>
                     <div class="form-group">
-                        <label for="contactSubject" class="form-label">Subject</label>
-                        <select id="contactSubject" name="subject" class="form-input form-select">
-                            <option value="">Select a topic</option>
-                            <option value="product">Product Inquiry</option>
-                            <option value="support">Support</option>
+                        <label class="form-label" for="subject">Subject</label>
+                        <select class="form-input form-select" id="subject" name="subject" required>
+                            <option value="" disabled selected>Select a topic</option>
+                            <option value="sales">Sales Inquiry</option>
+                            <option value="support">Technical Support</option>
                             <option value="partnership">Partnership</option>
+                            <option value="press">Press & Media</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="contactMessage" class="form-label">Message</label>
-                        <textarea id="contactMessage" name="message" class="form-input form-textarea" placeholder="Tell us what's on your mind..." rows="5" required></textarea>
-                        <span class="form-error" id="messageError"></span>
+                        <label class="form-label" for="message">Message</label>
+                        <textarea class="form-input form-textarea" id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-full" id="contactSubmit">
-                        <span class="btn-text">Send Message</span>
-                        <span class="btn-loading" style="display:none;">Sending…</span>
-                    </button>
+                    <button type="submit" class="btn btn-primary btn-full">Send Message</button>
                     <div class="form-status" id="formStatus"></div>
                 </form>
             </div>
@@ -408,7 +391,7 @@
             <div class="cta-content">
                 <h2 class="cta-title">Ready to experience the future?</h2>
                 <p class="cta-subtext">Visit a NEXUS Store, order online, or speak with a Specialist. Get your NEXUS today.</p>
-                <a href="#" class="btn btn-primary btn-large">Order Now</a>
+                <a href="#products" class="btn btn-primary btn-large">Order Now</a>
             </div>
         </div>
     </section>
@@ -427,21 +410,19 @@
                 <div class="footer-col">
                     <h4 class="footer-heading">Products</h4>
                     <ul class="footer-links">
-                        <li><a href="#">NEXUS Pro</a></li>
-                        <li><a href="#">NEXUS Air</a></li>
-                        <li><a href="#">NEXUS Lite</a></li>
-                        <li><a href="#">Compare</a></li>
-                        <li><a href="#">Accessories</a></li>
+                        <li><a href="pages/nexus-pro.html">NEXUS Pro</a></li>
+                        <li><a href="pages/nexus-air.html">NEXUS Air</a></li>
+                        <li><a href="pages/nexus-lite.html">NEXUS Lite</a></li>
+                        <li><a href="#specs">Compare</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4 class="footer-heading">Support</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
                         <li><a href="#">FAQ</a></li>
                         <li><a href="#">Warranty</a></li>
                         <li><a href="#">Repair</a></li>
-                        <li><a href="#">Trade-in</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -451,7 +432,6 @@
                         <li><a href="#">Careers</a></li>
                         <li><a href="#">Press</a></li>
                         <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Terms</a></li>
                     </ul>
                 </div>
             </div>

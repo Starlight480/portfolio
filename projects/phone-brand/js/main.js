@@ -406,4 +406,65 @@
         });
     }
 
+    // ============================================================
+    // Contact Form
+    // ============================================================
+
+    var contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        var formStatus = document.getElementById('formStatus');
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var name = document.getElementById('name').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var subject = document.getElementById('subject').value;
+            var message = document.getElementById('message').value.trim();
+
+            // Basic validation
+            if (!name || !email || !subject || !message) {
+                formStatus.className = 'form-status error';
+                formStatus.textContent = 'Please fill in all fields.';
+                return;
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                formStatus.className = 'form-status error';
+                formStatus.textContent = 'Please enter a valid email address.';
+                return;
+            }
+
+            // Submit to backend
+            var submitBtn = contactForm.querySelector('button[type="submit"]');
+            var originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            fetch('https://nexus-contact-api.onrender.com/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: name, email: email, subject: subject, message: message })
+            })
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+                if (data.success) {
+                    formStatus.className = 'form-status success';
+                    formStatus.textContent = 'Message sent successfully! We\'ll get back to you within 24 hours.';
+                    contactForm.reset();
+                } else {
+                    throw new Error(data.error || 'Failed to send');
+                }
+            })
+            .catch(function (error) {
+                formStatus.className = 'form-status error';
+                formStatus.textContent = 'Failed to send message. Please try again or email us directly.';
+            })
+            .finally(function () {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+    }
+
 })();

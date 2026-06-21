@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS Lite — Essentials, Elevated</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html#hero" class="nav-logo">
+                <span class="logo-icon">◈</span>
+                <span class="logo-text">NEXUS</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" class="nav-link">Overview</a></li>
+                <li><a href="#display" class="nav-link">Display</a></li>
+                <li><a href="#chip" class="nav-link">Chip</a></li>
+                <li><a href="#camera" class="nav-link">Camera</a></li>
+                <li><a href="#specs" class="nav-link">Specs</a></li>
+                <li><a href="#cta" class="nav-link">Buy</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="theme-icon theme-icon-light">☀</span>
+                    <span class="theme-icon theme-icon-dark">☾</span>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+        <div class="mobile-menu-panel" id="mobilePanel">
+            <ul class="mobile-nav-links">
+                <li><a href="#hero" class="mobile-nav-link">Overview</a></li>
+                <li><a href="#display" class="mobile-nav-link">Display</a></li>
+                <li><a href="#chip" class="mobile-nav-link">Chip</a></li>
+                <li><a href="#camera" class="mobile-nav-link">Camera</a></li>
+                <li><a href="#specs" class="mobile-nav-link">Specs</a></li>
+                <li><a href="#cta" class="mobile-nav-link">Buy</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ========== PRODUCT HERO ========== -->
+    <section class="product-hero" id="hero" data-scroll-animation="fade-up">
+        <div class="product-hero-container">
+            <div class="product-hero-content">
+                <span class="product-badge">Essential</span>
+                <h1 class="product-hero-title">NEXUS Lite</h1>
+                <p class="product-hero-tagline">Essentials, elevated.</p>
+                <p class="product-hero-price">From <strong>$499</strong></p>
+                <div class="product-hero-cta">
+                    <a href="#cta" class="btn btn-primary">Buy Now</a>
+                    <a href="#specs" class="btn btn-secondary">View Specs</a>
+                </div>
+                <div class="product-hero-colors">
+                    <span class="color-label">Colors:</span>
+                    <span class="color-dot active" style="background:#2d2d2d;" title="Graphite Black"></span>
+                    <span class="color-dot" style="background:#c0392b;" title="Crimson Red"></span>
+                    <span class="color-dot" style="background:#27ae60;" title="Forest Green"></span>
+                    <span class="color-dot" style="background:#f1c40f;" title="Sunflower Yellow"></span>
+                </div>
+            </div>
+            <div class="product-hero-visual">
+                <img src="../images/phone-lite.jpg" alt="NEXUS Lite" class="product-hero-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== DISPLAY ========== -->
+    <section class="spec-section" id="display" data-scroll-animation="fade-up">
+        <div class="spec-container">
+            <div class="spec-content">
+                <span class="section-label">Display</span>
+                <h2 class="spec-title">NEXUS Bright</h2>
+                <p class="spec-desc">A vibrant 6.1" AMOLED display with 1200 nits peak brightness. True-to-life colors, deep blacks, and sharp text — the essentials done right.</p>
+                <ul class="spec-highlights">
+                    <li><span class="spec-icon">◈</span><div><strong>6.1" NEXUS Bright</strong><span>AMOLED, 2532×1170, 460 ppi</span></div></li>
+                    <li><span class="spec-icon">◈</span><div><strong>60Hz Refresh</strong><span>Smooth and power-efficient</span></div></li>
+                    <li><span class="spec-icon">◈</span><div><strong>1200 nits Peak</strong><span>800 nits typical brightness</span></div></li>
+                    <li><span class="spec-icon">◈</span><div><strong>Standard Glass</strong><span>Durable front glass protection</span></div></li>
+                </ul>
+            </div>
+            <div class="spec-visual">
+                <div class="spec-display-mockup">
+                    <div class="mockup-gradient"></div>
+                    <div class="mockup-text">NEXUS Bright</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CHIP ========== -->
+    <section class="spec-section spec-section-alt" id="chip" data-scroll-animation="fade-up">
+        <div class="spec-container spec-container-reverse">
+            <div class="spec-content">
+                <span class="section-label">Performance</span>
+                <h2 class="spec-title">NEXUS Titan A15</h2>
+                <p class="spec-desc">Built on 4nm technology, the Titan A15 delivers excellent performance for everyday tasks, photography, and gaming. A 6-core CPU and 5-core GPU handle everything smoothly.</p>
+                <ul class="spec-highlights">
+                    <li><span class="spec-icon">◈</span><div><strong>4nm Process</strong><span>15 billion transistors</span></div></li>
+                    <li><span class="spec-icon">◈</span><div><strong>6-Core CPU</strong><span>2 performance + 4 efficiency cores</span></div></li>
+                    <li><span class="spec-icon">◈</span><div><strong>5-Core GPU</strong><span>Great for gaming and graphics</span></div></li>
+                    <li><span class="spec-icon">◈</span><div><strong>12-Core Neural Engine</strong><span>15.8 trillion ops/sec</span></div></li>
+                </ul>
+            </div>
+            <div class="spec-visual">
+                <div class="spec-chip-mockup">
+                    <div class="chip-visual">
+                        <div class="chip-core"></div>
+                        <div class="chip-label">Titan A15</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CAMERA ========== -->
+    <section class="spec-section" id="camera" data-scroll-animation="fade-up">
+        <div class="spec-container">
+            <div class="spec-content">
+                <span class="section-label">Camera</span>
+                <h2 class="spec-title">NEXUS Vision Lite</h2>
+                <p class="spec-desc">A capable dual-camera system with 12MP main and 12MP ultrawide. Night mode, portrait mode, and 4K video — all powered by computational photography.</p>
+                <ul class="spec-highlights">
+                    <li><span class="spec-icon">◈</span><div><strong>12MP Main Camera</strong><span>f/1.8, OIS, 1.4µm pixels</span></div></li>
+                    <li><span class="spec-icon">◈</span><div><strong>12MP Ultrawide</strong><span>f/2.4, 120° FoV</span></div></li>
+                    <li><span class="spec-icon">◈</span><div><strong>Night Mode</strong><span>Brighter photos in low light</span></div></li>
+                    <li><span class="spec-icon">◈</span><div><strong>4K Video</strong><span>Up to 60fps, Action mode</span></div></li>
+                </ul>
+            </div>
+            <div class="spec-visual">
+                <div class="spec-camera-mockup">
+                    <div class="camera-module">
+                        <div class="camera-lens"></div>
+                        <div class="camera-lens camera-lens-2"></div>
+                        <div class="camera-flash"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== BATTERY ========== -->
+    <section class="spec-section spec-section-alt" id="battery" data-scroll-animation="fade-up">
+        <div class="spec-container spec-container-reverse">
+            <div class="spec-content">
+                <span class="section-label">Battery</span>
+                <h2 class="spec-title">Reliable Battery</h2>
+                <p class="spec-desc">3,800 mAh battery with 20W NEXUS Charge. No wireless charging — keeping the price accessible while still delivering all-day power.</p>
+                <ul class="spec-highlights">
+                    <li><span class="spec-icon">◈</span><div><strong>3,800 mAh</strong><span>All-day battery for most users</span></div></li>
+                    <li><span class="spec-icon">◈</span><div><strong>20W NEXUS Charge</strong><span>50% in 45 minutes</span></div></li>
+                    <li><span class="spec-icon">◈</span><div><strong>No Wireless Charging</strong><span>Keeps cost accessible</span></div></li>
+                    <li><span class="spec-icon">◈</span><div><strong>20 Hours Video</strong><span>Efficient chip + display</span></div></li>
+                </ul>
+            </div>
+            <div class="spec-visual">
+                <div class="battery-visual">
+                    <div class="battery-icon">
+                        <div class="battery-body">
+                            <div class="battery-fill" style="width:65%"></div>
+                        </div>
+                        <div class="battery-tip"></div>
+                    </div>
+                    <span class="battery-label">3,800 mAh</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FULL SPECS ========== -->
+    <section class="full-specs" id="specs" data-scroll-animation="fade-up">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Full Specifications</span>
+                <h2 class="section-title">NEXUS Lite</h2>
+            </div>
+            <div class="specs-table-wrapper">
+                <table class="specs-table">
+                    <tbody>
+                        <tr><td>Display</td><td>6.1" NEXUS Bright, AMOLED, 2532×1170, 460 ppi, 60Hz, 1200 nits peak</td></tr>
+                        <tr><td>Chip</td><td>NEXUS Titan A15 — 4nm, 6-core CPU, 5-core GPU, 12-core Neural Engine</td></tr>
+                        <tr><td>Camera (Rear)</td><td>12MP main (f/1.8, OIS) + 12MP ultrawide (f/2.4, 120°)</td></tr>
+                        <tr><td>Video</td><td>4K up to 60fps, Action mode</td></tr>
+                        <tr><td>Front Camera</td><td>12MP, f/2.2, Face ID Lite, 1080p video</td></tr>
+                        <tr><td>Battery</td><td>3,800 mAh — up to 20h video playback</td></tr>
+                        <tr><td>Charging</td><td>20W NEXUS Charge (wired only)</td></tr>
+                        <tr><td>Storage</td><td>64GB / 128GB / 256GB</td></tr>
+                        <tr><td>RAM</td><td>6GB</td></tr>
+                        <tr><td>Connectivity</td><td>NEXUS 5G (sub-6GHz), NEXUS Wi-Fi 6, Bluetooth 5.3, NFC</td></tr>
+                        <tr><td>OS</td><td>NEXUS OS 2</td></tr>
+                        <tr><td>Biometrics</td><td>Side-mounted fingerprint + Face ID Lite</td></tr>
+                        <tr><td>Build</td><td>Aluminum frame, standard glass front and back</td></tr>
+                        <tr><td>Water Resistance</td><td>IP67 (1 meter, 30 minutes)</td></tr>
+                        <tr><td>Weight</td><td>164g</td></tr>
+                        <tr><td>Colors</td><td>Graphite Black, Crimson Red, Forest Green, Sunflower Yellow</td></tr>
+                        <tr><td>Price</td><td>$499 (64GB) / $599 (128GB) / $699 (256GB)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== COMPARE ========== -->
+    <section class="compare-section" data-scroll-animation="fade-up">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Compare</span>
+                <h2 class="section-title">Which NEXUS is right for you?</h2>
+            </div>
+            <div class="compare-grid">
+                <div class="compare-card">
+                    <a href="nexus-pro.html" class="compare-card-link">
+                        <img src="../images/phone-pro.jpg" alt="NEXUS Pro" class="compare-img">
+                        <h3>NEXUS Pro</h3>
+                        <p class="compare-price">From $999</p>
+                        <ul class="compare-features">
+                            <li>6.7" Quantum XDR</li>
+                            <li>Titan S1 chip</li>
+                            <li>Vision Pro triple camera</li>
+                            <li>4,870 mAh battery</li>
+                            <li>Titanium + Ceramic Shield 2</li>
+                        </ul>
+                        <span class="btn btn-secondary">View Pro →</span>
+                    </a>
+                </div>
+                <div class="compare-card">
+                    <a href="nexus-air.html" class="compare-card-link">
+                        <img src="../images/phone-air.jpg" alt="NEXUS Air" class="compare-img">
+                        <h3>NEXUS Air</h3>
+                        <p class="compare-price">From $749</p>
+                        <ul class="compare-features">
+                            <li>6.3" Quantum</li>
+                            <li>Titan S1 chip</li>
+                            <li>Vision dual camera</li>
+                            <li>4,000 mAh battery</li>
+                            <li>Aluminum + Ceramic Shield 2</li>
+                        </ul>
+                        <span class="btn btn-secondary">View Air →</span>
+                    </a>
+                </div>
+                <div class="compare-card compare-card-active">
+                    <img src="../images/phone-lite.jpg" alt="NEXUS Lite" class="compare-img">
+                    <h3>NEXUS Lite</h3>
+                    <p class="compare-price">From $499</p>
+                    <ul class="compare-features">
+                        <li>6.1" NEXUS Bright</li>
+                        <li>Titan A15 chip</li>
+                        <li>Vision Lite dual camera</li>
+                        <li>3,800 mAh battery</li>
+                        <li>Aluminum + standard glass</li>
+                    </ul>
+                    <a href="#cta" class="btn btn-primary">Buy Lite</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="cta" id="cta" data-scroll-animation="fade-up">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Get NEXUS Lite.</h2>
+                <p class="cta-subtext">From $499 or $20.79/mo. for 24 months. Trade-in credit available.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary btn-large">Order Now</a>
+                    <a href="#" class="btn btn-secondary btn-large">Find a Store</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-icon">◈</span>
+                        <span class="logo-text">NEXUS</span>
+                    </div>
+                    <p class="footer-tagline">Redefine your world.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-heading">Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="nexus-pro.html">NEXUS Pro</a></li>
+                        <li><a href="nexus-air.html">NEXUS Air</a></li>
+                        <li><a href="nexus-lite.html">NEXUS Lite</a></li>
+                        <li><a href="../index.html#specs">Compare</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-heading">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Warranty</a></li>
+                        <li><a href="#">Repair</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-heading">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About NEXUS</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2026 NEXUS Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/product.js"></script>
+</body>
+</html>
