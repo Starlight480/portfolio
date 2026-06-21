@@ -19,11 +19,15 @@
     var mobileLinks = document.querySelectorAll('.mobile-nav-link');
     var scrollElements = document.querySelectorAll('[data-scroll-animation]');
     var productCards = document.querySelectorAll('.product-card');
-    var colorDots = document.querySelectorAll('.color-dot');
     var pickerDots = document.querySelectorAll('.picker-dot');
     var selectedColorName = document.getElementById('selectedColorName');
-    var phonePicker = document.querySelector('.phone-picker');
+    var pickerTint = document.getElementById('pickerTint');
     var allAnchors = document.querySelectorAll('a[href^="#"]');
+
+    // Contact form
+    var contactForm = document.getElementById('contactForm');
+    var contactSubmit = document.getElementById('contactSubmit');
+    var formStatus = document.getElementById('formStatus');
 
     // ============================================================
     // Navbar Scroll Effect
@@ -37,7 +41,6 @@
         }
     }
 
-    // Throttled scroll handler
     var scrollTicking = false;
     function onScroll() {
         if (!scrollTicking) {
@@ -65,7 +68,6 @@
         document.documentElement.setAttribute('data-theme', theme);
         document.documentElement.setAttribute('data-theme-transitioning', '');
         localStorage.setItem('nexus-theme', theme);
-        // Remove transitioning class after animation completes
         setTimeout(function () {
             document.documentElement.removeAttribute('data-theme-transitioning');
         }, 400);
@@ -77,12 +79,9 @@
         setTheme(next);
     }
 
-    // Initialize theme
     setTheme(getPreferredTheme());
-
     themeToggle.addEventListener('click', toggleTheme);
 
-    // Listen for system theme changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
         if (!localStorage.getItem('nexus-theme')) {
             setTheme(e.matches ? 'dark' : 'light');
@@ -119,7 +118,6 @@
         link.addEventListener('click', closeMobileMenu);
     });
 
-    // Close on escape key
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
             closeMobileMenu();
@@ -154,7 +152,6 @@
 
     function initScrollAnimations() {
         if (!('IntersectionObserver' in window)) {
-            // Fallback: show all elements immediately
             scrollElements.forEach(function (el) {
                 el.classList.add('animated');
             });
@@ -216,44 +213,15 @@
     initParallax();
 
     // ============================================================
-    // Product Card Color Selector
+    // Color Picker — Tint Overlay on Phone Image
     // ============================================================
 
-    productCards.forEach(function (card) {
-        var dots = card.querySelectorAll('.color-dot');
-        var phone = card.querySelector('.phone');
-
-        dots.forEach(function (dot) {
-            dot.addEventListener('click', function () {
-                var color = this.getAttribute('data-color');
-                if (!color || !phone) return;
-
-                // Update active state
-                dots.forEach(function (d) { d.classList.remove('active'); });
-                this.classList.add('active');
-
-                // Update phone color
-                phone.setAttribute('data-color', color);
-            });
-
-            // Keyboard accessibility
-            dot.addEventListener('keydown', function (e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.click();
-                }
-            });
-
-            // Make dot focusable
-            dot.setAttribute('tabindex', '0');
-            dot.setAttribute('role', 'button');
-            dot.setAttribute('aria-label', 'Select color: ' + dot.getAttribute('data-color'));
-        });
-    });
-
-    // ============================================================
-    // Color Picker (Specs Section)
-    // ============================================================
+    var colorTints = {
+        midnight: 'rgba(26, 26, 46, 0.35)',
+        silver: 'rgba(192, 192, 192, 0.30)',
+        gold: 'rgba(212, 165, 116, 0.35)',
+        blue: 'rgba(74, 111, 165, 0.35)'
+    };
 
     var colorNames = {
         midnight: 'Midnight',
@@ -265,14 +233,17 @@
     pickerDots.forEach(function (dot) {
         dot.addEventListener('click', function () {
             var color = this.getAttribute('data-color');
-            if (!color || !phonePicker) return;
+            if (!color) return;
 
             // Update active state
             pickerDots.forEach(function (d) { d.classList.remove('active'); });
             this.classList.add('active');
 
-            // Update phone color
-            phonePicker.setAttribute('data-color', color);
+            // Update tint overlay
+            if (pickerTint && colorTints[color]) {
+                pickerTint.style.background = colorTints[color];
+                pickerTint.style.opacity = '1';
+            }
 
             // Update label
             if (selectedColorName && colorNames[color]) {
@@ -280,7 +251,6 @@
             }
         });
 
-        // Keyboard accessibility
         dot.addEventListener('keydown', function (e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -320,7 +290,6 @@
 
     var ctaBtn = document.querySelector('.cta .btn-primary');
     if (ctaBtn) {
-        // Add ripple animation keyframes
         var styleSheet = document.createElement('style');
         styleSheet.textContent = '@keyframes ripple-effect { to { transform: scale(4); opacity: 0; } }';
         document.head.appendChild(styleSheet);
@@ -343,6 +312,97 @@
             this.style.overflow = 'hidden';
             this.appendChild(ripple);
             setTimeout(function () { ripple.remove(); }, 600);
+        });
+    }
+
+    // ============================================================
+    // Contact Form — Client-Side Validation + Backend Submit
+    // ============================================================
+
+    if (contactForm) {
+        // Clear errors on input
+        var formInputs = contactForm.querySelectorAll('.form-input');
+        formInputs.forEach(function (input) {
+            input.addEventListener('input', function () {
+                this.classList.remove('error');
+                var errorEl = document.getElementById(this.id.replace('contact', '').toLowerCase() + 'Error');
+                if (errorEl) errorEl.textContent = '';
+            });
+        });
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Validate
+            var name = document.getElementById('contactName').value.trim();
+            var email = document.getElementById('contactEmail').value.trim();
+            var message = document.getElementById('contactMessage').value.trim();
+            var isValid = true;
+
+            // Reset errors
+            formInputs.forEach(function (inp) { inp.classList.remove('error'); });
+            formStatus.className = 'form-status';
+            formStatus.style.display = 'none';
+
+            if (!name) {
+                document.getElementById('contactName').classList.add('error');
+                document.getElementById('nameError').textContent = 'Please enter your name';
+                isValid = false;
+            }
+
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('contactEmail').classList.add('error');
+                document.getElementById('emailError').textContent = 'Please enter a valid email';
+                isValid = false;
+            }
+
+            if (!message) {
+                document.getElementById('contactMessage').classList.add('error');
+                document.getElementById('messageError').textContent = 'Please enter a message';
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            // Show loading state
+            contactSubmit.disabled = true;
+            contactSubmit.querySelector('.btn-text').style.display = 'none';
+            contactSubmit.querySelector('.btn-loading').style.display = 'inline';
+
+            // Submit to backend
+            fetch('https://nexus-contact-api.onrender.com/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    subject: document.getElementById('contactSubject').value,
+                    message: message
+                })
+            })
+            .then(function (response) { return response.json(); })
+            .then(function (data) {
+                contactSubmit.disabled = false;
+                contactSubmit.querySelector('.btn-text').style.display = 'inline';
+                contactSubmit.querySelector('.btn-loading').style.display = 'none';
+
+                if (data.success) {
+                    formStatus.textContent = '✓ Message sent successfully! We\'ll get back to you within 24 hours.';
+                    formStatus.className = 'form-status success';
+                    contactForm.reset();
+                } else {
+                    formStatus.textContent = '✗ ' + (data.error || 'Something went wrong. Please try again.');
+                    formStatus.className = 'form-status error';
+                }
+            })
+            .catch(function (err) {
+                contactSubmit.disabled = false;
+                contactSubmit.querySelector('.btn-text').style.display = 'inline';
+                contactSubmit.querySelector('.btn-loading').style.display = 'none';
+                formStatus.textContent = '✗ Could not connect to the server. Please try again later or email us directly.';
+                formStatus.className = 'form-status error';
+                console.error('Contact form error:', err);
+            });
         });
     }
 

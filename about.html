@@ -124,6 +124,11 @@
       border-color: var(--violet);
     }
     .contact-form textarea { min-height: 120px; resize: vertical; }
+    .form-status {
+      font-size: 0.9rem;
+      padding: var(--space-sm) 0;
+      display: none;
+    }
     .contact-info p { margin-bottom: var(--space-md); }
     .contact-link {
       display: flex;
@@ -227,24 +232,28 @@
       <div class="contact-grid">
         <div>
           <p>Interested in working together? Have a project in mind? Reach out — I respond within 24 hours.</p>
-          <a href="mailto:hello@starlight480.dev" class="contact-link">hello@starlight480.dev</a>
+          <a href="mailto:inaisrael2009@gmail.com" class="contact-link">inaisrael2009@gmail.com</a>
           <a href="https://github.com/Starlight480" target="_blank" rel="noopener" class="contact-link">github.com/Starlight480</a>
           <a href="https://t.me/Starlight480" target="_blank" rel="noopener" class="contact-link">t.me/Starlight480</a>
         </div>
-        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks! This is a demo form — wire it up to your backend.');">
+        <form class="contact-form" id="portfolioContactForm" novalidate>
           <div>
-            <label for="name">Name</label>
-            <input type="text" id="name" placeholder="Your name" required>
+            <label for="contactName">Name</label>
+            <input type="text" id="contactName" placeholder="Your name" required>
           </div>
           <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="you@example.com" required>
+            <label for="contactEmail">Email</label>
+            <input type="email" id="contactEmail" placeholder="you@example.com" required>
           </div>
           <div>
-            <label for="message">Message</label>
-            <textarea id="message" placeholder="Tell me about your project..." required></textarea>
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" placeholder="Tell me about your project..." required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary" style="align-self: flex-start">Send Message</button>
+          <button type="submit" class="btn btn-primary" style="align-self: flex-start" id="contactSubmit">
+            <span class="btn-text">Send Message</span>
+            <span class="btn-loading" style="display:none;">Sending…</span>
+          </button>
+          <div class="form-status" id="formStatus" style="display:none;"></div>
         </form>
       </div>
     </div>
@@ -257,5 +266,52 @@
   </footer>
 
   <script src="js/theme.js"></script>
+  <script>
+  (function() {
+    var form = document.getElementById('portfolioContactForm');
+    var submitBtn = document.getElementById('contactSubmit');
+    var formStatus = document.getElementById('formStatus');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var name = document.getElementById('contactName').value.trim();
+      var email = document.getElementById('contactEmail').value.trim();
+      var message = document.getElementById('contactMessage').value.trim();
+      if (!name || !email || !message) return;
+      submitBtn.disabled = true;
+      submitBtn.querySelector('.btn-text').style.display = 'none';
+      submitBtn.querySelector('.btn-loading').style.display = 'inline';
+      fetch('https://nexus-contact-api.onrender.com/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name, email: email, subject: 'other', message: message })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        submitBtn.disabled = false;
+        submitBtn.querySelector('.btn-text').style.display = 'inline';
+        submitBtn.querySelector('.btn-loading').style.display = 'none';
+        if (data.success) {
+          formStatus.textContent = '✓ Message sent! I\'ll get back to you within 24 hours.';
+          formStatus.style.display = 'block';
+          formStatus.style.color = '#27ae60';
+          form.reset();
+        } else {
+          formStatus.textContent = '✗ ' + (data.error || 'Something went wrong.');
+          formStatus.style.display = 'block';
+          formStatus.style.color = '#c0392b';
+        }
+      })
+      .catch(function() {
+        submitBtn.disabled = false;
+        submitBtn.querySelector('.btn-text').style.display = 'inline';
+        submitBtn.querySelector('.btn-loading').style.display = 'none';
+        formStatus.textContent = '✗ Could not connect. Please email me directly at inaisrael2009@gmail.com';
+        formStatus.style.display = 'block';
+        formStatus.style.color = '#c0392b';
+      });
+    });
+  })();
+  </script>
 </body>
 </html>
